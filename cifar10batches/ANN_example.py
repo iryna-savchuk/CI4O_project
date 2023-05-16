@@ -1,5 +1,6 @@
 import random
 import numpy as np
+from numpy import load
 
 # Activation Functions:
 # computes the sigmoid activation function for a given input x.
@@ -160,32 +161,55 @@ class genetic_algorithm:
         # function returns the best agent from the last generation, which has the lowest fitness value.
         return agents[0]
 
-def unpickle(file):
-    import pickle
-    with open(file, 'rb') as fo:
-        dict = pickle.load(fo, encoding='bytes')
-    return dict
 
-batch_1 = unpickle('data_batch_1')
-X = np.array(batch_1[b'data'][:3])
-y = np.array([[0, 1, 1]]).T
+#############################################################################
+#################### Some attempts for our dataset ##########################
+#############################################################################
+#def unpickle(file):
+#    import pickle
+#    with open(file, 'rb') as fo:
+#        dict = pickle.load(fo, encoding='bytes')
+#    return dict
+
+#batch_1 = unpickle('data_batch_1')
+#X = np.array(batch_1[b'data'][:3])
+#X = X.astype('float32')
+#X /=255
+#y = np.array(batch_1[b'labels'][:3])
+#y = np.array([[0, 1, 1]]).T
+
+#X_train_matrix = load('X_train_matrix.npz')
+#X_train_matrix = X_train_matrix['arr_0']
+#X_train_matrix
+
+#y_train_matrix = load('y_train_matrix.npz')
+#y_train_matrix = y_train_matrix['arr_0']
+#y_train_matrix
+
+#X = X_train_matrix[:4]
+#y = y_train_matrix[:4]
+
+
+###########################################################################
+##################### The given Example ###################################
+###########################################################################
 
 # Each row of the array corresponds to a data point with three features.
-#X = np.array([[0, 0, 1], [1, 1, 1], [1, 0, 1], [0, 1, 1]])
+X = np.array([[0, 0, 1], [1, 1, 1], [1, 0, 1], [0, 1, 1]])
 # It is a column vector with four rows, each row corresponding to the target value for the corresponding data point in X.
-#y = np.array([[0, 1, 1]]).T
+y = np.array([[0, 1, 1, 0]]).T
 # This defines the structure of the neural network.
 # It is a list of layers, where each layer is specified by a list [input_size, output_size, activation_function].
 # the network has two layers: the input layer with three neurons, a hidden layer with ten neurons using the sigmoid activation function,
 # and an output layer with one neuron also using the sigmoid activation function.
-network = [[3072, 3072, sigmoid], [None, 1, sigmoid]]
+network = [[3, 10, sigmoid], [None, 1, sigmoid]]
 # This assigns the genetic_algorithm class to the variable ga.
 ga = genetic_algorithm
 # This executes the genetic algorithm by calling the execute method of the genetic_algorithm class.
 # It creates a population of 100 agents and runs the genetic algorithm for 100 generations
 # The threshold is set to 0.1. The input data X, target values y, and the network structure are also passed as arguments
 # The returned agent represents the best agent found by the genetic algorithm.
-agent = ga.execute(10, 100, 0.1, X, y, network)
+agent = ga.execute(100, 100, 0.1, X, y, network)
 # assigns the weights of the neural network of the best agent to the variable weights.
 weights = agent.neural_network.weights
 # This prints the fitness value of the best agent, which represents how well the neural network performs on the provided data.
@@ -194,14 +218,5 @@ print(agent.fitness)
 print(agent.neural_network.propagate(X))
 
 
-#def unpickle(file):
-#    import pickle
-#    with open(file, 'rb') as fo:
-#        dict = pickle.load(fo, encoding='bytes')
-#    return dict
-
-#batch_1 = unpickle('data_batch_1')
-#X = np.array(batch_1[b'data'])
-#y = np.array(batch_1[b'labels']).T
 
 
