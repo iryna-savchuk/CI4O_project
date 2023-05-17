@@ -1,21 +1,24 @@
-from random import shuffle, choice, sample, random
+#from random import shuffle, choice, sample
+from random import random  # random() - Returns a random float number between 0 and 1
 from operator import attrgetter
 from copy import deepcopy
 
+import numpy as np
 
 class Individual:
     def __init__(
         self,
         representation=None,
-        size=None,
-        replacement=True,
-        valid_set=None,
+        input=28*28,
+        hidden=512,
+        output=10
     ):
         if representation is None:
-            if replacement is True:
-                self.representation = [choice(valid_set) for i in range(size)]
-            elif replacement is False:
-                self.representation = sample(valid_set, size)
+            weights_1 = np.random.rand(input * hidden).reshape(input, hidden)
+            biases_1 = np.random.rand(hidden).reshape(hidden, )
+            weights_2 = np.random.rand(hidden * output).reshape(hidden, output)
+            biases_2 = np.random.rand(output).reshape(output, )
+            self.representation = [weights_1, biases_1, weights_2, biases_2]
         else:
             self.representation = representation
         self.fitness = self.get_fitness()
@@ -39,7 +42,10 @@ class Individual:
         self.representation[position] = value
 
     def __repr__(self):
-        return f"Individual(size={len(self.representation)}); Fitness: {self.fitness}"
+        weights_print = ""
+        for weights in self.representation:
+            weights_print = weights_print+" "+str(weights.shape)
+        return f"Individual: {weights_print}; Fitness: {self.fitness}\n"
 
 
 class Population:
@@ -49,11 +55,7 @@ class Population:
         self.optim = optim
         for _ in range(size):
             self.individuals.append(
-                Individual(
-                    size=kwargs["sol_size"],
-                    replacement=kwargs["replacement"],
-                    valid_set=kwargs["valid_set"],
-                )
+                Individual()
             )
 
     def evolve(self, gens, xo_prob, mut_prob, select, mutate, crossover, elitism):
