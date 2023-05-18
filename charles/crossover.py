@@ -66,17 +66,20 @@ def pmx(p1, p2):
     Returns:
         Individuals: Two offspring, resulting from the crossover.
     """
-    xo_points = sample(range(len(p1)), 2)
-    #xo_points = [3,6]
-    xo_points.sort()
+    xo_points = sample(range(len(p1)), 2)  # to define randomly the segment
+    xo_points = [3,6]  # it will be a list like this
+    # xo_points.sort() # sort it to create a range
+
 
     def pmx_offspring(x,y):
-        o = [None] * len(x)
+        o = [None] * len(x)  # create an offspring full of none
         # offspring2
-        o[xo_points[0]:xo_points[1]]  = x[xo_points[0]:xo_points[1]]
-        z = set(y[xo_points[0]:xo_points[1]]) - set(x[xo_points[0]:xo_points[1]])
+        # copy the segment from the other parent
+        o[xo_points[0]:xo_points[1]]  = x[xo_points[0]:xo_points[1]] # from 3 to 6, please get your list segments from the other parent
+        z = set(y[xo_points[0]:xo_points[1]]) - set(x[xo_points[0]:xo_points[1]]) # find the unique numbers that exist in the segment of y and does not exist in the segment of x
 
         # numbers that exist in the segment
+        # get tge pair of the numbers in the segment
         for i in z:
             temp = i
             index = y.index(x[y.index(temp)])
@@ -94,7 +97,7 @@ def pmx(p1, p2):
     o1, o2 = pmx_offspring(p1, p2), pmx_offspring(p2, p1)
     return o1, o2
 
-
+# we might want to swap all weights for one or more layers between two parents.
 def arithmetic_xo(p1, p2):
     """Implementation of arithmetic crossover/geometric crossover with constant alpha.
 
@@ -109,21 +112,21 @@ def arithmetic_xo(p1, p2):
     o1 = [None] * len(p1)
     o2 = [None] * len(p1)
     for i in range(len(p1)):
-        o1[i] = p1[i] * alpha + (1-alpha) * p2[i]
-        o2[i] = p2[i] * alpha + (1-alpha) * p1[i]
+        o1 = [alpha * w1 + (1 - alpha) * w2 for w1, w2 in zip(p1, p2)]
+        o2 = [alpha * w2 + (1 - alpha) * w1 for w1, w2 in zip(p1, p2)]
     return o1, o2
 
 
-if __name__ == '__main__':
-    #p1, p2 = [9, 8, 4, 5, 6, 7, 1, 3, 2, 10], [8, 7, 1, 2, 3, 10, 9, 5, 4, 6]
-    p1, p2 = [0.1,0.15,0.3],[0.3,0.1,0.2]
-    o1, o2 = arithmetic_xo(p1, p2)
-    print(o1, o2)
 
-
-
-
-
+# to swap all weights for one or more layers between two parents.
+# This code iterates over each layer and, with a 50% chance, swaps the weights for that layer between the two parents.
+def crossover(p1, p2):
+    """Implement uniform crossover."""
+    o1, o2 = deepcopy(p1), deepcopy(p2)
+    for i in range(len(p1)):
+        if np.random.rand() < 0.5:
+            o1[i], o2[i] = o2[i].copy(), o1[i].copy()
+    return o1, o2
 
 
 

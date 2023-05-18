@@ -41,6 +41,7 @@ def swap_mutation(individual):
 
 def inversion_mutation(individual):
     """Inversion mutation for a GA individual. Reverts a portion of the representation.
+    We choose an interval and invert that interval
 
     Args:
         individual (Individual): A GA individual from charles.py
@@ -55,18 +56,15 @@ def inversion_mutation(individual):
     return individual
 
 
-if __name__ == '__main__':
-    test = [1, 2, 3, 4, 5, 6]
-    test = inversion_mutation(test)
-    print(test)
-
-
-
-
-
-
-
-
+# This code iterates over every weight in the individual and, with a probability of mutation_rate, adds a small value drawn from a normal distribution to the weight.
+# For mutation, we might want to perturb a weight by a small amount.
+def mutation(individual, mutation_rate=0.01):
+    """Apply Gaussian mutation to the weights of the individual."""
+    for i in range(len(individual)):
+        for j in np.nditer(individual[i], op_flags=['readwrite']):
+            if np.random.random() < mutation_rate:
+                j[...] += np.random.normal(-1, 1)
+    return individual
 
 
 
