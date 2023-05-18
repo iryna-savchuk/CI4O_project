@@ -2,10 +2,10 @@ from copy import deepcopy
 import pandas as pd
 import numpy as np
 
-from charles import Population, Individual
-from selection import tournament_sel, fps
-from crossover import cycle_xo, pmx, arithmetic_xo
-from mutation import swap_mutation, inversion_mutation
+from charles.charles import Population, Individual
+from charles.selection import tournament_sel, fps
+from charles.crossover import cycle_xo, pmx, arithmetic_xo
+from charles.mutation import swap_mutation, inversion_mutation
 
 from tensorflow import keras
 from tensorflow.keras import layers
