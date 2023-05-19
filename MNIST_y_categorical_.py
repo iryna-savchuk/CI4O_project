@@ -3,8 +3,8 @@ from copy import deepcopy
 import pandas as pd
 
 from charles.charles import Population, Individual
-from charles.selection import tournament_sel, fps
-from charles.crossover import cycle_xo, pmx, arithmetic_xo
+from charles.selection import tournament_sel
+from charles.crossover import arithmetic_xo, uniform_xo, arithmetic_xo_aula
 from charles.mutation import swap_mutation, inversion_mutation
 
 
@@ -57,48 +57,14 @@ for i in range(4):
     # Train the population
     pop.evolve(gens=4,
                select=tournament_sel,
-               mutate=swap_mutation,
-               crossover=arithmetic_xo,
-               mut_prob=0.01,
-               xo_prob=0.9,
-               elitism=True)
-    all_runs_best_fitness.append(pop.best_fitnesses)
-
-# Calculate the mean fitness for each generation across all runs
-swap_mean_fitness_per_generation = [np.mean([run[i] for run in all_runs_best_fitness]) for i in range(len(all_runs_best_fitness[0]))]
-swap_median_fitness_per_generation = [np.median([run[i] for run in all_runs_best_fitness]) for i in range(len(all_runs_best_fitness[0]))]
-
-
-all_runs_best_fitness = []
-
-for i in range(4):
-    print(f"Running GA iteration: {i + 1}")
-    # Create a population
-    pop = Population(size=4, optim='min')
-    # Reset best_fitness_list for each run
-    best_fitness_list = []
-    # Train the population
-    pop.evolve(gens=4,
-               select=tournament_sel,
                mutate=inversion_mutation,
                crossover=arithmetic_xo,
-               mut_prob=0.2,
+               mut_prob=0.7,
                xo_prob=0.8,
-               elitism=True)
+               elitism=True,
+               tourn_size = 4)
     all_runs_best_fitness.append(pop.best_fitnesses)
 
 # Calculate the mean fitness for each generation across all runs
 inversion_mean_fitness_per_generation = [np.mean([run[i] for run in all_runs_best_fitness]) for i in range(len(all_runs_best_fitness[0]))]
 inversion_median_fitness_per_generation = [np.median([run[i] for run in all_runs_best_fitness]) for i in range(len(all_runs_best_fitness[0]))]
-
-
-data = {
-    'swap_mean': swap_mean_fitness_per_generation,
-    'swap_median': swap_median_fitness_per_generation,
-    'inversion_mean': inversion_mean_fitness_per_generation,
-    'inversion_median': inversion_median_fitness_per_generation
-}
-
-df = pd.DataFrame(data)
-
-print(df)

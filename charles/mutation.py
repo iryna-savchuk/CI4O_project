@@ -25,7 +25,9 @@ def binary_mutation(individual):
     return individual
 
 
-def swap_mutation(individual):
+# It randomly selects two positions in an individual's representation and swaps the values at those positions.
+# This introduces variation into the population by changing the genetic material of an individual.
+def swap_mutation(individual): # The function takes an individual as input, represented as a list.
     """Swap mutation for a GA individual. Swaps the bits.
 
     Args:
@@ -34,9 +36,12 @@ def swap_mutation(individual):
     Returns:
         Individual: Mutated Individual
     """
+    mut_element = 0  # the first element index to mutate, the element within the individual where the mutation will occur.
+    # It uses the sample function from the random module to randomly select two indexes (mut_indexes) within the range of the individual.
     mut_indexes = sample(range(0, len(individual[0])), 2)
-    individual[0][mut_indexes[0]], individual[0][mut_indexes[1]] = individual[0][mut_indexes[1]], individual[0][mut_indexes[0]]
-    return individual
+    # It performs swap mutation by swapping the values at the selected indexes in the individual. The values are swapped using a tuple assignment operation:
+    individual[mut_element][mut_indexes[0]], individual[mut_element][mut_indexes[1]] = individual[mut_element][mut_indexes[1]], individual[mut_element][mut_indexes[0]]
+    return individual # the function returns the mutated individual.
 
 
 def inversion_mutation(individual):
@@ -49,9 +54,10 @@ def inversion_mutation(individual):
     Returns:
         Individual: Mutated Individual
     """
+    mut_element = 0  # the first element index to mutate, the element within the individual where the mutation will occur.
     mut_indexes = sample(range(0, len(individual[0])), 2)
     mut_indexes.sort()
-    individual[0][mut_indexes[0]:mut_indexes[1]] = individual[0][mut_indexes[0]:mut_indexes[1]][::-1]
+    individual[mut_element][mut_indexes[0]:mut_indexes[1]] = individual[mut_element][mut_indexes[0]:mut_indexes[1]][::-1]
     return individual
 
 
