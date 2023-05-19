@@ -91,6 +91,7 @@ for i in range(4):
 inversion_mean_fitness_per_generation = [np.mean([run[i] for run in all_runs_best_fitness]) for i in range(len(all_runs_best_fitness[0]))]
 inversion_median_fitness_per_generation = [np.median([run[i] for run in all_runs_best_fitness]) for i in range(len(all_runs_best_fitness[0]))]
 
+
 data = {
     'swap_mean': swap_mean_fitness_per_generation,
     'swap_median': swap_median_fitness_per_generation,

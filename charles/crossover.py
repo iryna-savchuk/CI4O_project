@@ -108,7 +108,7 @@ def arithmetic_xo(p1, p2):
     Returns:
         Individuals: Two offspring, resulting from the crossover.
     """
-    alpha = uniform(0, 1)
+    alpha = uniform(-1, 1)
     o1 = [None] * len(p1)
     o2 = [None] * len(p1)
     for i in range(len(p1)):
@@ -124,8 +124,7 @@ def crossover(p1, p2):
     """Implement uniform crossover."""
     o1, o2 = deepcopy(p1), deepcopy(p2)
     for i in range(len(p1)):
-        if np.random.rand() < 0.5:
-            o1[i], o2[i] = o2[i].copy(), o1[i].copy()
+        o1[i], o2[i] = o2[i].copy(), o1[i].copy()
     return o1, o2
 
 
