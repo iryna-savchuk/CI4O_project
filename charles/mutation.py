@@ -34,8 +34,8 @@ def swap_mutation(individual):
     Returns:
         Individual: Mutated Individual
     """
-    mut_indexes = sample(range(0, len(individual)), 2)
-    individual[mut_indexes[0]], individual[mut_indexes[1]] = individual[mut_indexes[1]], individual[mut_indexes[0]]
+    mut_indexes = sample(range(0, len(individual[0])), 2)
+    individual[0][mut_indexes[0]], individual[0][mut_indexes[1]] = individual[0][mut_indexes[1]], individual[0][mut_indexes[0]]
     return individual
 
 
@@ -49,24 +49,10 @@ def inversion_mutation(individual):
     Returns:
         Individual: Mutated Individual
     """
-    mut_indexes = sample(range(0, len(individual)), 2)
-    #mut_indexes = [0,3]
+    mut_indexes = sample(range(0, len(individual[0])), 2)
     mut_indexes.sort()
-    individual[mut_indexes[0]:mut_indexes[1]] = individual[mut_indexes[0]:mut_indexes[1]][::-1]
+    individual[0][mut_indexes[0]:mut_indexes[1]] = individual[0][mut_indexes[0]:mut_indexes[1]][::-1]
     return individual
-
-
-# This code iterates over every weight in the individual and, with a probability of mutation_rate, adds a small value drawn from a normal distribution to the weight.
-# For mutation, we might want to perturb a weight by a small amount.
-def mutation(individual, mutation_rate=0.01):
-    """Apply Gaussian mutation to the weights of the individual."""
-    for i in range(len(individual)):
-        for j in np.nditer(individual[i], op_flags=['readwrite']):
-            if np.random.random() < mutation_rate:
-                j[...] += np.random.normal(-1, 1)
-    return individual
-
-
 
 
 

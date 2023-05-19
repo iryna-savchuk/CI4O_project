@@ -82,8 +82,8 @@ for i in range(4):
                select=tournament_sel,
                mutate=inversion_mutation,
                crossover=arithmetic_xo,
-               mut_prob=0.01,
-               xo_prob=0.9,
+               mut_prob=0.2,
+               xo_prob=0.8,
                elitism=True)
     all_runs_best_fitness.append(pop.best_fitnesses)
 
