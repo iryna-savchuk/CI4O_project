@@ -1,14 +1,11 @@
 from charles.charles import Population, Individual
 from data.mnist_data import train_images, train_labels
-from copy import deepcopy
 from charles.crossover import cycle_xo, pmx, single_point_co, arithmetic_xo
 from charles.mutation import swap_mutation, inversion_mutation
 from charles.selection import tournament_sel, fps
-
 import numpy as np
-from tensorflow import keras
-from tensorflow.keras import layers
-
+from tensorflow.keras import Sequential, layers
+import sys
 
 def get_fitness(self):
     input = self.representation["input"]
@@ -16,7 +13,7 @@ def get_fitness(self):
     output = self.representation["output"]
 
     # Defining the architecture of a neural network
-    nn = keras.Sequential([
+    nn = Sequential([
         layers.Dense(hidden, activation="relu", input_shape=(input,)),
         layers.Dense(output, activation="softmax")
     ])
@@ -39,21 +36,34 @@ def get_fitness(self):
 # Monkey patching
 Individual.get_fitness = get_fitness
 
-pop = Population(
-    size=30,
-    sol_input=28*28,
-    sol_hidden=512,
-    sol_output=10,
-    valid_range=[-1, 1],
-    optim="max")
+def run_evolution():
+    # Generating Population
+    pop = Population(
+        size=5,
+        sol_input=28 * 28,
+        sol_hidden=512,
+        sol_output=10,
+        valid_range=[-1, 1],
+        optim="max")
 
-print(pop.individuals)
-#print(pop.individuals[0].representation)
+    print(pop.individuals)
+    # print(pop.individuals[0].representation)
+
+    # Running evolution iterations
+    pop.evolve(gens=2,
+               select=tournament_sel, mutate=inversion_mutation, crossover=arithmetic_xo,
+               mut_prob=0.3, xo_prob=0.9,
+               elitism=True)
 
 
-pop.evolve(gens=20,
-           select=tournament_sel, mutate=inversion_mutation, crossover=arithmetic_xo,
-           mut_prob=0.3, xo_prob=0.9,
-           elitism=True)
-
-
+# Calling run_evolution() and printing/storing the results
+output_to_console = True
+if output_to_console:
+    run_evolution()
+else:  # if want to store results to file
+    with open("output.txt", "w") as file:
+        # Redirecting standard output to the file
+        sys.stdout = file
+        run_evolution()
+    # Restoring the standard output
+    sys.stdout = sys.__stdout__

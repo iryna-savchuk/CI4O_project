@@ -4,7 +4,7 @@ from operator import attrgetter
 from copy import deepcopy
 from tqdm import tqdm
 
-random.seed(42)
+random.seed(42)  #Ensuring reproducibility of the results
 
 class Individual:
     def __init__(
@@ -17,7 +17,6 @@ class Individual:
     ):
         if representation is None:
             size = input * hidden + hidden + hidden * output + output
-            #random_weights = np.random.uniform(valid_range[0], valid_range[1], size=size)
             random_weights = [random.uniform(valid_range[0], valid_range[1]) for _ in range(size)]
             self.representation = {
                 "weights": random_weights,
@@ -32,9 +31,6 @@ class Individual:
     def get_fitness(self):
         raise Exception("You need to monkey patch the fitness path.")
 
-    def get_neighbours(self, func, **kwargs):
-        raise Exception("You need to monkey patch the neighbourhood function.")
-
     def index(self, value):
         return self.representation["weights"].index(value)
 
@@ -48,10 +44,10 @@ class Individual:
         self.representation["weights"][position] = value
 
     def __repr__(self):
-        #return f"Individual: {self.representation};" #Fitness: {self.fitness}\n"
-        #return '\nIndividual:'+'\n'.join(f"{k}: {v}" for k, v in self.representation.items() if k!="weights")+'\nFitness: '+str(self.fitness)+'\n'
         representation_print = str(self.representation["input"])+", " + str(self.representation["hidden"])+", " + str(self.representation["output"])
         return f"\nIndividual: {representation_print}; Fitness: {self.fitness}"
+
+
 class Population:
     def __init__(self, size, optim, **kwargs):
         print("Generating initial population...")
