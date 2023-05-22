@@ -29,7 +29,7 @@ def get_fitness(self):
     # Compiling the model
     nn.compile(loss='sparse_categorical_crossentropy', metrics=["accuracy"])
 
-    train_loss, train_acc = nn.evaluate(train_images, train_labels)
+    train_loss, train_acc = nn.evaluate(train_images, train_labels, verbose=0)
     return train_acc
 
 
@@ -37,9 +37,12 @@ def get_fitness(self):
 Individual.get_fitness = get_fitness
 
 def run_evolution():
+    pop_size = 20
+    print("Population Size:", pop_size)
+
     # Generating Population
     pop = Population(
-        size=5,
+        size=pop_size,
         sol_input=28 * 28,
         sol_hidden=512,
         sol_output=10,
@@ -51,14 +54,14 @@ def run_evolution():
 
     # Running evolution iterations
     print('Evolving...')
-    pop.evolve(gens=2,
+    pop.evolve(gens=100,
                select=tournament_sel, mutate=inversion_mutation, crossover=arithmetic_xo,
                mut_prob=0.3, xo_prob=0.9,
                elitism=True)
 
 
 # Calling run_evolution() and printing/storing the results
-output_to_console = True
+output_to_console = False
 if output_to_console:
     run_evolution()
 else:  # if want to store results to file
