@@ -48,17 +48,14 @@ def inversion_mutation(individual):
     Returns:
         Individual: Mutated Individual
     """
-    mut_indexes = sample(range(0, len(individual)), 2)
-    #mut_indexes = [0,3]
-    mut_indexes.sort()
+    mut_indexes = sample(range(0, len(individual)), 2) # Two indices mut_indexes are randomly chosen from the range of the individual length.
+                                                       # These indices determine the start and end of the subsection that will be inverted.
+    mut_indexes.sort() # These indices are then sorted to ensure that the start index is less than the end index.
+    # The subsection of the chromosome between these two indices is then reversed
     individual[mut_indexes[0]:mut_indexes[1]] = individual[mut_indexes[0]:mut_indexes[1]][::-1]
     return individual
 
 
-if __name__ == '__main__':
-    test = [1, 2, 3, 4, 5, 6]
-    test = inversion_mutation(test)
-    print(test)
 
 
 
