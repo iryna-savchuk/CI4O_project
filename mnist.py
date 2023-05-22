@@ -27,9 +27,9 @@ def get_fitness(self):
     nn.set_weights([weights_1, biases_1, weights_2, biases_2])
 
     # Compiling the model
-    nn.compile(metrics=["accuracy"])
+    nn.compile(loss='sparse_categorical_crossentropy', metrics=["accuracy"])
 
-    _, train_acc = nn.evaluate(train_images, train_labels, verbose=0)
+    train_loss, train_acc = nn.evaluate(train_images, train_labels)
     return train_acc
 
 
@@ -50,6 +50,7 @@ def run_evolution():
     # print(pop.individuals[0].representation)
 
     # Running evolution iterations
+    print('Evolving...')
     pop.evolve(gens=2,
                select=tournament_sel, mutate=inversion_mutation, crossover=arithmetic_xo,
                mut_prob=0.3, xo_prob=0.9,

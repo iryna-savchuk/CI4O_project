@@ -67,6 +67,7 @@ class Population:
     def evolve(self, gens, xo_prob, mut_prob, select, mutate, crossover, elitism):
 
         for i in tqdm(range(gens)):
+            print("Starting Generation ", i + 1, "...")
             new_pop = []
 
             if elitism:
@@ -117,7 +118,7 @@ class Population:
 
             self.individuals = new_pop
 
-            print("\nGeneration >>> ", i+1)
+            print("Results for Generation >>> ", i+1)
             if self.optim == "max":
                 print(f'Best Individual: {max(self, key=attrgetter("fitness"))}')
             elif self.optim == "min":
