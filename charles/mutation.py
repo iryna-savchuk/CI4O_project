@@ -56,7 +56,26 @@ def inversion_mutation(individual):
     return individual
 
 
+def arithmetic_mutation(individual, lower_bound=-0.1, upper_bound=0.1):
+    """Arithmetic mutation for a GA individual. Each gene is altered by a random value.
 
+    Args:
+        individual (Individual): A GA individual
+        lower_bound (float): The lower bound for the random value
+        upper_bound (float): The upper bound for the random value
+
+    Returns:
+        Individual: Mutated Individual
+    """
+    for i in range(len(individual)):
+        # adding a random value to the gene, which is generated with the random.uniform(lower_bound, upper_bound) function.
+        mutation_value = random.uniform(lower_bound, upper_bound)
+        individual[i] += mutation_value
+
+        # Ensure the gene is within the desired range
+        individual[i] = max(min(individual[i], 1.0), -1.0)
+
+    return individual
 
 
 
