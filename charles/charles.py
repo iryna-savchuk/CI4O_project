@@ -64,7 +64,7 @@ class Population:
                 )
             )
 
-    def evolve(self, gens, xo_prob, mut_prob, select, mutate, crossover, elitism):
+    def evolve(self, gens, xo_prob, mut_prob, select, mutate, crossover, elitism, tourn_size):
 
         for i in tqdm(range(gens)):
             print("Starting Generation ", i + 1, "...")
@@ -77,7 +77,7 @@ class Population:
                     elite = deepcopy(min(self.individuals, key=attrgetter("fitness")))
 
             while len(new_pop) < self.size:
-                parent1, parent2 = select(self), select(self)
+                parent1, parent2 = select(self, tourn_size), select(self, tourn_size)
 
                 if random.random() < xo_prob:
                     offspring1, offspring2 = crossover(parent1, parent2)

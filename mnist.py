@@ -27,10 +27,10 @@ def get_fitness(self):
     nn.set_weights([weights_1, biases_1, weights_2, biases_2])
 
     # Compiling the model
-    nn.compile(loss='sparse_categorical_crossentropy', metrics=["accuracy"])
+    nn.compile(loss='categorical_crossentropy', metrics=["accuracy"])
 
     train_loss, train_acc = nn.evaluate(train_images, train_labels)
-    return train_acc
+    return train_loss
 
 
 # Monkey patching
@@ -39,19 +39,19 @@ Individual.get_fitness = get_fitness
 def run_evolution():
     # Generating Population
     pop = Population(
-        size=5,
+        size=10,
         sol_input=28 * 28,
         sol_hidden=512,
         sol_output=10,
         valid_range=[-1, 1],
-        optim="max")
+        optim="min")
 
     print(pop.individuals)
     # print(pop.individuals[0].representation)
 
     # Running evolution iterations
     print('Evolving...')
-    pop.evolve(gens=2,
+    pop.evolve(gens=100,
                select=tournament_sel, mutate=inversion_mutation, crossover=arithmetic_xo,
                mut_prob=0.3, xo_prob=0.9,
                elitism=True)

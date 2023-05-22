@@ -32,7 +32,7 @@ def fps(population):
         raise Exception("No optimization specified (min or max).")
 
 
-def tournament_sel(population, size=4):
+def tournament_sel(population, tourn_size):
     """Tournament selection implementation.
 
     Args:
@@ -46,7 +46,7 @@ def tournament_sel(population, size=4):
     # Select individuals based on tournament size
     # with choice, there is a possibility of repetition in the choices,
     # so every individual has a chance of getting selected
-    tournament = [choice(population.individuals) for _ in range(size)]
+    tournament = [choice(population.individuals) for _ in range(tourn_size)]
 
     # with sample, there is no repetition of choices
     # tournament = sample(population.individuals, size)
