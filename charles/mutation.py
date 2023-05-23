@@ -49,10 +49,9 @@ def inversion_mutation(individual):
     Returns:
         Individual: Mutated Individual
     """
-    mut_indexes = sample(range(0, len(individual)), 2) # Two indices mut_indexes are randomly chosen from the range of the individual length.
-                                                       # These indices determine the start and end of the subsection that will be inverted.
-    mut_indexes.sort() # These indices are then sorted to ensure that the start index is less than the end index.
-    # The subsection of the chromosome between these two indices is then reversed
+    mut_indexes = sample(range(0, len(individual)), 2)
+    mut_indexes.sort()
+    # The subsection of the chromosome between the two indices is reversed
     individual[mut_indexes[0]:mut_indexes[1]] = individual[mut_indexes[0]:mut_indexes[1]][::-1]
     return individual
 
@@ -69,7 +68,7 @@ def arithmetic_mutation(individual, lower_bound=-0.1, upper_bound=0.1):
         Individual: Mutated Individual
     """
     for i in range(len(individual)):
-        # adding a random value to the gene, which is generated with the random.uniform(lower_bound, upper_bound) function.
+        # Generating and adding a random value to the gene
         mutation_value = random.uniform(lower_bound, upper_bound)
         individual[i] += mutation_value
 

@@ -95,7 +95,7 @@ def pmx(p1, p2):
     return o1, o2
 
 
-def arithmetic_xo(p1, p2): # arithmetic crossover or geometric crossover
+def arithmetic_xo(p1, p2):
     """Implementation of arithmetic crossover/geometric crossover with constant alpha.
 
     Args:
@@ -105,14 +105,11 @@ def arithmetic_xo(p1, p2): # arithmetic crossover or geometric crossover
     Returns:
         Individuals: Two offspring, resulting from the crossover.
     """
-    alpha = uniform(0, 1) #  random number alpha is generated in the range [0, 1].
-    # the alpha value determines the degree of influence each parent has on the offspring.
-    # If alpha is closer to 0, the offspring will resemble the average of the parents.
-    # If alpha is closer to 1, the offspring will resemble one of the parents more.
-    o1 = [None] * len(p1) # It creates two empty lists, o1 and o2, to store the offspring.
+    alpha = uniform(0, 1)
+    o1 = [None] * len(p1)
     o2 = [None] * len(p1)
     for i in range(len(p1)):
-        o1[i] = p1[i] * alpha + (1-alpha) * p2[i] # o1[i] is closer to p1[i] when alpha is closer to 1, and closer to p2[i] when alpha is closer to 0.
+        o1[i] = p1[i] * alpha + (1-alpha) * p2[i]
         o2[i] = p2[i] * alpha + (1-alpha) * p1[i]
     return o1, o2
 

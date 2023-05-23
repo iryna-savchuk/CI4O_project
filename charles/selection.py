@@ -2,7 +2,7 @@ from random import uniform, choice, sample
 from operator import attrgetter
 
 
-def fps(population): # The individuals are selected based on their fitness scores
+def fps(population):
     """Fitness proportionate selection implementation.
 
     Args:
@@ -12,19 +12,14 @@ def fps(population): # The individuals are selected based on their fitness score
         Individual: selected individual.
     """
 
-    if population.optim == "max": # This function only implements the "maximization" scenario
+    if population.optim == "max":
 
         # Sum total fitness
-        # the total sum of the fitness of all individuals in the population is calculated.
         total_fitness = sum([i.fitness for i in population])
-        # This is like creating a roulette wheel where each individual occupies a portion of the wheel proportional to its fitness.
         # Get a 'position' on the wheel
-        spin = uniform(0, total_fitness) # A random number between 0 and the total sum of fitness is generated. This can be likened to spinning the roulette wheel.
+        spin = uniform(0, total_fitness)
         position = 0
         # Find individual in the position of the spin
-        # It then iterates over the population in order, keeping a running total of the fitnesses.
-        # When the running total exceeds the random number, the current individual is selected.
-        # individuals with higher fitness have a higher chance of being selected.
         for individual in population:
             position += individual.fitness
             if position > spin:
