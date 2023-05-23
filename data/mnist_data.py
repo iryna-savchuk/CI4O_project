@@ -8,5 +8,5 @@ train_images = train_images.reshape(-1, 784) / 255.0
 test_images = test_images.reshape(-1, 784) / 255.0
 
 # Preprocess class labels
-train_labels = np_utils.to_categorical(train_labels, 10)
-test_labels = np_utils.to_categorical(test_labels, 10)
+#train_labels = np_utils.to_categorical(train_labels, 10)
+#test_labels = np_utils.to_categorical(test_labels, 10)
