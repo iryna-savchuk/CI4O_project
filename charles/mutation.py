@@ -1,4 +1,5 @@
 from random import randint, sample
+import random
 
 
 def binary_mutation(individual):

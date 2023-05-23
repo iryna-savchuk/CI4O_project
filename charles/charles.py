@@ -57,6 +57,7 @@ class Population: # defines the class Population, used to initialize a new popul
         self.individuals = []
         self.size = size # The initial population size is determined by the parameter size
         self.optim = optim # parameter to determine whether the optimization problem is maximization or minimization
+        self.best_fitnesses = []  # list to store the best fitness for each generation
         for _ in tqdm(range(size)):
             self.individuals.append(
                 Individual( # **kwargs is used to pass the parameters to the Individual class to initialize each individual.
@@ -143,6 +144,16 @@ class Population: # defines the class Population, used to initialize a new popul
                 print(f'Best Individual: {max(self, key=attrgetter("fitness"))}')
             elif self.optim == "min":
                 print(f'Best Individual: {min(self, key=attrgetter("fitness"))}')
+
+            # Update best_fitnesses list
+            # The best individual in the current population is printed based on the optimization direction (self.optim).
+            if self.optim == "max":
+                best_individual = max(self, key=attrgetter("fitness"))
+                self.best_fitnesses.append(
+                    best_individual.fitness)  # The fitness value of the best individual is added to the best_fitnesses list.
+            elif self.optim == "min":
+                best_individual = min(self, key=attrgetter("fitness"))
+                self.best_fitnesses.append(best_individual.fitness)
 
     def __len__(self): # returns the length of the population, i.e., the number of individuals.
         return len(self.individuals)
