@@ -32,7 +32,17 @@ def fps(population):
         raise Exception("No optimization specified (min or max).")
 
 
-def tournament_sel(population, size=4):
+# Selection doesn't need to be changed as it doesn't directly operate on the individuals' representation.
+# In tournament selection, a group of individuals (the tournament) is randomly chosen from the population,
+# and the best individual within that group is selected as the winner.
+# Tournament selection is a way to balance exploration and exploitation in genetic algorithms.
+# By randomly selecting individuals and choosing the best among them,
+# tournament selection promotes diversity and increases the chance of preserving good individuals in the population.
+# tourn_size - the number of individuals in the tournament, was set a parameter to be set in the model
+# it establish the selection pressure, how strong is the probability of the next individuals to be selected
+# small value - low selection pressure - give more diversity and allow to scape from the local optimum
+# large value - high selection pressure - it is more prompt to the only best survives
+def tournament_sel(population, tourn_size):
     """Tournament selection implementation.
 
     Args:
@@ -46,7 +56,7 @@ def tournament_sel(population, size=4):
     # Select individuals based on tournament size
     # with choice, there is a possibility of repetition in the choices,
     # so every individual has a chance of getting selected
-    tournament = [choice(population.individuals) for _ in range(size)]
+    tournament = [choice(population.individuals) for _ in range(tourn_size)]
 
     # with sample, there is no repetition of choices
     # tournament = sample(population.individuals, size)
@@ -54,5 +64,3 @@ def tournament_sel(population, size=4):
         return max(tournament, key=attrgetter("fitness"))
     if population.optim == "min":
         return min(tournament, key=attrgetter("fitness"))
-
-
