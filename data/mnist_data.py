@@ -1,5 +1,5 @@
 from tensorflow.keras.datasets import mnist
-from keras.utils import np_utils
+#from keras.utils import np_utils
 
 (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
 

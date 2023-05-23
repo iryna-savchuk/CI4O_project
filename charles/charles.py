@@ -6,7 +6,7 @@ from tqdm import tqdm # Python library that produces a progress bar
 
 random.seed(42)  # Ensuring reproducibility of the results
 
-# Define classes
+# Classes
 
 class Individual: # Class defining an individual for the Genetic Algorithm
     # Each individual is characterized by a set of weights (representing a neural network's weights),
@@ -55,13 +55,13 @@ class Individual: # Class defining an individual for the Genetic Algorithm
         return f"\nIndividual: {representation_print}; Fitness: {self.fitness}"
 
 
+
 class Population: # Class defining Population of individuals in Genetic Algorithm
     def __init__(self, size, optim, **kwargs):
         print("Generating initial population...")
         self.individuals = []
         self.size = size # initial population size is determined by the parameter size
         self.optim = optim # parameter to determine whether an optimization problem is maximization or minimization
-        self.best_fitnesses = []  # list to store the best fitness for each generation
         for _ in tqdm(range(size)):
             self.individuals.append(
                 Individual( # **kwargs is used to pass the parameters to the Individual class to initialize each individual
@@ -72,18 +72,26 @@ class Population: # Class defining Population of individuals in Genetic Algorith
                 )
             )
 
-    def evolve(self, gens, xo_prob, mut_prob, select, mutate, crossover, elitism, tourn_size):
-        # Method to evolve the population for a given number of generations,
-        # with a given selection method, crossover, mutation, and elitism.
+    def evolve(self, gens, select, crossover, mutate, xo_prob, mut_prob, elitism, tourn_size):
+        """
+        Method to evolve the population for a given number of generations,
+        with a given selection method, crossover, mutation, and elitism.
 
-        # Parameters:
-        # gens (int): The number of generations to evolve the population for
-        # xo_prob (float): Crossover probability
-        # mut_prob (float): Mutation probability
-        # select (func): The selection method to use
-        # mutate (func): The mutation method to use
-        # crossover (func): The crossover method to use
-        # elitism (bool): Whether to use elitism
+        Args:
+            gens (int): The number of generations to evolve the population for
+            select (func): The selection method to use
+            crossover (func): The crossover method to use
+            mutate (func): The mutation method to use
+            xo_prob (float): Crossover probability
+            mut_prob (float): Mutation probability
+            elitism (bool): Whether to use elitism
+
+        Returns:
+            (list): The list of the best fitness values got for each generation during evolution.
+            The length of the list is equal to 'gens' - number of generations.
+        """
+
+        best_fitness_lst = []  # list to store the best fitness for each generation
 
         for i in tqdm(range(gens)):
             # Printing out the current generation number each time a new generation starts
@@ -97,13 +105,16 @@ class Population: # Class defining Population of individuals in Genetic Algorith
                     elite = deepcopy(min(self.individuals, key=attrgetter("fitness")))
 
             while len(new_pop) < self.size: # generate new individuals until the population size is reached
+                # Selection
                 parent1, parent2 = select(self, tourn_size), select(self, tourn_size)
 
+                # Crossover
                 if random.random() < xo_prob:
                     offspring1, offspring2 = crossover(parent1, parent2)
                 else:
                     offspring1, offspring2 = parent1, parent2
 
+                # Mutation
                 if random.random() < mut_prob:
                     offspring1 = mutate(offspring1)
                 if random.random() < mut_prob:
@@ -143,20 +154,19 @@ class Population: # Class defining Population of individuals in Genetic Algorith
             # Replacing the population with the new one - completing the transition to the next generation
             self.individuals = new_pop
 
-            # Printing out information about the generation
-            print("Results for Generation >>> ", i+1)
-            if self.optim == "max":
-                print(f'Best Individual: {max(self, key=attrgetter("fitness"))}')
-            elif self.optim == "min":
-                print(f'Best Individual: {min(self, key=attrgetter("fitness"))}')
-
-            # Updating the best_fitnesses list
+            # Finding the best individual in generation
             if self.optim == "max":
                 best_individual = max(self, key=attrgetter("fitness"))
-                self.best_fitnesses.append(best_individual.fitness)
             elif self.optim == "min":
                 best_individual = min(self, key=attrgetter("fitness"))
-                self.best_fitnesses.append(best_individual.fitness)
+
+            # Printing out information about the best individual
+            print(f'Best Individual in Generation {i + 1}: {best_individual}')
+
+            # Appending the list of the best fitness values that will be returned once evolution ends
+            best_fitness_lst.append(best_individual.fitness)
+
+        return best_fitness_lst
 
     def __len__(self): # Returns the number of individuals in the population
         return len(self.individuals)

@@ -8,6 +8,7 @@ from tensorflow.keras import Sequential, layers
 import csv
 import sys
 
+
 def get_fitness(self):
     input = self.representation["input"]
     hidden = self.representation["hidden"]
@@ -28,7 +29,7 @@ def get_fitness(self):
     nn.set_weights([weights_1, biases_1, weights_2, biases_2])
 
     # Compiling the model
-    nn.compile(loss='sparse_categorical_crossentropy', metrics=["accuracy"])
+    nn.compile(loss='sparse_categorical_crossentropy', metrics=["categorical_accuracy"])
 
     train_loss, train_acc = nn.evaluate(train_images, train_labels, verbose=0)
     return train_acc
@@ -38,11 +39,12 @@ def get_fitness(self):
 Individual.get_fitness = get_fitness
 
 
-all_runs_best_fitness = []
-def run_evolution(run, pop_size, gens, select, crossover, mutate, xo_prob, mut_prob, elitism, tourn_size, filename):
-    for i in range(run):
-        print(f"Running GA iteration: {i + 1}")
-        # Generating Population
+def run_evolution(runs, pop_size, gens, select, crossover, mutate, xo_prob, mut_prob, elitism, tourn_size, output_dir):
+
+    for r in range(runs):
+        print(f"RUN #{r + 1}")
+
+        # Generating Initial Population
         pop = Population(
             size=pop_size,
             sol_input=28 * 28,
@@ -50,58 +52,23 @@ def run_evolution(run, pop_size, gens, select, crossover, mutate, xo_prob, mut_p
             sol_output=10,
             valid_range=[-1, 1],
             optim="max")
-
         print(pop.individuals)
-        # print(pop.individuals[0].representation)
 
         # Running evolution iterations
         print('Evolving...')
-        pop.evolve(gens=gens,
-                   select=select, mutate= mutate, crossover=crossover,
-                   mut_prob=mut_prob, xo_prob=xo_prob,
-                   elitism=elitism,
-                   tourn_size=tourn_size)
-        all_runs_best_fitness.append(pop.best_fitnesses)
+        best_fitness_lst = pop.evolve(gens=gens,
+                                      select=select, crossover=crossover, mutate= mutate,
+                                      xo_prob=xo_prob, mut_prob=mut_prob,
+                                      elitism=elitism,
+                                      tourn_size=tourn_size)
 
+        print(best_fitness_lst)
 
-    # Writing to CSV
-    with open(filename, 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(['Best_fitness'])  # header
-        for fitness in all_runs_best_fitness:
-            writer.writerow([fitness])
-
-    print(f"All best fitness, from each generation, from each run have been saved to {filename}")
 
 # we can define the name of the file, to have different files with different parameters
-run_evolution(run = 1, pop_size = 10, gens = 10, select = tournament_sel, crossover= arithmetic_xo, mutate= arithmetic_mutation,
-              xo_prob= 0.9, mut_prob= 0.3, elitism= True, tourn_size= 4, filename = '4_50_50_tournament_sel_arithmetic_xo_mutation_90_30_4.csv')
-
-# How the list, we will store as csv file, looks like:
-print('----------------------------------------------------------------------------------------------')
-print('-----------List with the best fitness, from each generation, from each run -------------------')
-print(all_runs_best_fitness)
-
-# based on the list, if we want to calculate the Average Best Fitness, instead of store all_runs_best_fitness, we can store this
-print('-----------------------------------------------------------------')
-print('-----------List with the Average Best Fitness -------------------')
-abf = [np.mean([run[i] for run in all_runs_best_fitness]) for i in range(len(all_runs_best_fitness[0]))]
-print(abf)
-
-# Or the Median Best Fitness, best if we have outliers:
-print('----------------------------------------------------------------')
-print('-----------List with the Median Best Fitness -------------------')
-mbf = [np.median([run[i] for run in all_runs_best_fitness]) for i in range(len(all_runs_best_fitness[0]))]
-print(mbf)
-
-# Calling run_evolution() and printing/storing the results
-#output_to_console = False
-#if output_to_console:
-#    run_evolution()
-#else:  # if want to store results to file
-#    with open("output.cvs", "w") as file:
-#        # Redirecting standard output to the file
-#        sys.stdout = file
-#        run_evolution()
-#    # Restoring the standard output
-#    sys.stdout = sys.__stdout__
+run_evolution(runs=2, pop_size=20, gens=5,
+              select= tournament_sel,
+              crossover=arithmetic_xo,
+              mutate= arithmetic_mutation,
+              xo_prob= 0.9, mut_prob= 0.1, elitism=True, tourn_size= 4,
+              output_dir = '4_50_50_tournament_sel_arithmetic_xo_mutation_90_30_4.csv')
