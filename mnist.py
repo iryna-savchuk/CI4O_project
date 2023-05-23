@@ -30,12 +30,13 @@ def get_fitness(self):
     # Compiling the model
     nn.compile(loss='sparse_categorical_crossentropy', metrics=["accuracy"])
 
-    train_loss, train_acc = nn.evaluate(train_images, train_labels)
+    train_loss, train_acc = nn.evaluate(train_images, train_labels, verbose=0)
     return train_acc
 
 
 # Monkey patching
 Individual.get_fitness = get_fitness
+
 
 all_runs_best_fitness = []
 def run_evolution(run, pop_size, gens, select, crossover, mutate, xo_prob, mut_prob, elitism, tourn_size, filename):
@@ -61,6 +62,7 @@ def run_evolution(run, pop_size, gens, select, crossover, mutate, xo_prob, mut_p
                    elitism=elitism,
                    tourn_size=tourn_size)
         all_runs_best_fitness.append(pop.best_fitnesses)
+
 
     # Writing to CSV
     with open(filename, 'w', newline='') as csvfile:

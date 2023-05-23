@@ -1,3 +1,4 @@
+Population Size: 20
 Generating initial population...
 [
 Individual: 784, 512, 10; Fitness: 0.10499999672174454, 
@@ -19,94 +20,405 @@ Individual: 784, 512, 10; Fitness: 0.09413333237171173,
 Individual: 784, 512, 10; Fitness: 0.08184999972581863, 
 Individual: 784, 512, 10; Fitness: 0.09056666493415833, 
 Individual: 784, 512, 10; Fitness: 0.05251666530966759, 
-Individual: 784, 512, 10; Fitness: 0.15109999477863312, 
-Individual: 784, 512, 10; Fitness: 0.1129833310842514, 
-Individual: 784, 512, 10; Fitness: 0.08393333107233047, 
-Individual: 784, 512, 10; Fitness: 0.1359499990940094, 
-Individual: 784, 512, 10; Fitness: 0.07000000029802322, 
-Individual: 784, 512, 10; Fitness: 0.12171666324138641, 
-Individual: 784, 512, 10; Fitness: 0.0916166678071022, 
-Individual: 784, 512, 10; Fitness: 0.11774999648332596, 
-Individual: 784, 512, 10; Fitness: 0.0919666662812233, 
-Individual: 784, 512, 10; Fitness: 0.10029999911785126, 
-Individual: 784, 512, 10; Fitness: 0.13883332908153534]
-
-Generation >>>  1
+Individual: 784, 512, 10; Fitness: 0.15109999477863312]
+Evolving...
+Starting Generation  1 ...
+Results for Generation >>>  1
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.17339999973773956
-
-Generation >>>  2
+Individual: 784, 512, 10; Fitness: 0.15109999477863312
+Starting Generation  2 ...
+Results for Generation >>>  2
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.1783333271741867
-
-Generation >>>  3
+Individual: 784, 512, 10; Fitness: 0.15458333492279053
+Starting Generation  3 ...
+Results for Generation >>>  3
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.178766667842865
-
-Generation >>>  4
+Individual: 784, 512, 10; Fitness: 0.15648333728313446
+Starting Generation  4 ...
+Results for Generation >>>  4
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.18593333661556244
-
-Generation >>>  5
+Individual: 784, 512, 10; Fitness: 0.15666666626930237
+Starting Generation  5 ...
+Results for Generation >>>  5
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.18604999780654907
-
-Generation >>>  6
+Individual: 784, 512, 10; Fitness: 0.15710000693798065
+Starting Generation  6 ...
+Results for Generation >>>  6
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.19374999403953552
-
-Generation >>>  7
+Individual: 784, 512, 10; Fitness: 0.1780666708946228
+Starting Generation  7 ...
+Results for Generation >>>  7
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.19374999403953552
-
-Generation >>>  8
+Individual: 784, 512, 10; Fitness: 0.20713333785533905
+Starting Generation  8 ...
+Results for Generation >>>  8
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.2096666693687439
-
-Generation >>>  9
+Individual: 784, 512, 10; Fitness: 0.20713333785533905
+Starting Generation  9 ...
+Results for Generation >>>  9
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.21494999527931213
-
-Generation >>>  10
+Individual: 784, 512, 10; Fitness: 0.20713333785533905
+Starting Generation  10 ...
+Results for Generation >>>  10
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.21584999561309814
-
-Generation >>>  11
+Individual: 784, 512, 10; Fitness: 0.20723333954811096
+Starting Generation  11 ...
+Results for Generation >>>  11
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.2160833328962326
-
-Generation >>>  12
+Individual: 784, 512, 10; Fitness: 0.2077166736125946
+Starting Generation  12 ...
+Results for Generation >>>  12
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.2160833328962326
-
-Generation >>>  13
+Individual: 784, 512, 10; Fitness: 0.2077166736125946
+Starting Generation  13 ...
+Results for Generation >>>  13
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.21615000069141388
-
-Generation >>>  14
+Individual: 784, 512, 10; Fitness: 0.2077166736125946
+Starting Generation  14 ...
+Results for Generation >>>  14
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.2161666601896286
-
-Generation >>>  15
+Individual: 784, 512, 10; Fitness: 0.2077166736125946
+Starting Generation  15 ...
+Results for Generation >>>  15
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.2185666710138321
-
-Generation >>>  16
+Individual: 784, 512, 10; Fitness: 0.20848333835601807
+Starting Generation  16 ...
+Results for Generation >>>  16
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.22001667320728302
-
-Generation >>>  17
+Individual: 784, 512, 10; Fitness: 0.21156667172908783
+Starting Generation  17 ...
+Results for Generation >>>  17
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.22055000066757202
-
-Generation >>>  18
+Individual: 784, 512, 10; Fitness: 0.21698333323001862
+Starting Generation  18 ...
+Results for Generation >>>  18
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.22128333151340485
-
-Generation >>>  19
+Individual: 784, 512, 10; Fitness: 0.21698333323001862
+Starting Generation  19 ...
+Results for Generation >>>  19
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.2313833385705948
-
-Generation >>>  20
+Individual: 784, 512, 10; Fitness: 0.21698333323001862
+Starting Generation  20 ...
+Results for Generation >>>  20
 Best Individual: 
-Individual: 784, 512, 10; Fitness: 0.2328999936580658
+Individual: 784, 512, 10; Fitness: 0.2194499969482422
+Starting Generation  21 ...
+Results for Generation >>>  21
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2194499969482422
+Starting Generation  22 ...
+Results for Generation >>>  22
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2194499969482422
+Starting Generation  23 ...
+Results for Generation >>>  23
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2194666713476181
+Starting Generation  24 ...
+Results for Generation >>>  24
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.21953333914279938
+Starting Generation  25 ...
+Results for Generation >>>  25
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.22005000710487366
+Starting Generation  26 ...
+Results for Generation >>>  26
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2223166674375534
+Starting Generation  27 ...
+Results for Generation >>>  27
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.24213333427906036
+Starting Generation  28 ...
+Results for Generation >>>  28
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2637333273887634
+Starting Generation  29 ...
+Results for Generation >>>  29
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2637333273887634
+Starting Generation  30 ...
+Results for Generation >>>  30
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2637333273887634
+Starting Generation  31 ...
+Results for Generation >>>  31
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2738666534423828
+Starting Generation  32 ...
+Results for Generation >>>  32
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2738666534423828
+Starting Generation  33 ...
+Results for Generation >>>  33
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2738833427429199
+Starting Generation  34 ...
+Results for Generation >>>  34
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2759833335876465
+Starting Generation  35 ...
+Results for Generation >>>  35
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2759833335876465
+Starting Generation  36 ...
+Results for Generation >>>  36
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2760666608810425
+Starting Generation  37 ...
+Results for Generation >>>  37
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2760666608810425
+Starting Generation  38 ...
+Results for Generation >>>  38
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27611666917800903
+Starting Generation  39 ...
+Results for Generation >>>  39
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27611666917800903
+Starting Generation  40 ...
+Results for Generation >>>  40
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27613332867622375
+Starting Generation  41 ...
+Results for Generation >>>  41
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27613332867622375
+Starting Generation  42 ...
+Results for Generation >>>  42
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27630001306533813
+Starting Generation  43 ...
+Results for Generation >>>  43
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2763666808605194
+Starting Generation  44 ...
+Results for Generation >>>  44
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2763666808605194
+Starting Generation  45 ...
+Results for Generation >>>  45
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27639999985694885
+Starting Generation  46 ...
+Results for Generation >>>  46
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27639999985694885
+Starting Generation  47 ...
+Results for Generation >>>  47
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27639999985694885
+Starting Generation  48 ...
+Results for Generation >>>  48
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27639999985694885
+Starting Generation  49 ...
+Results for Generation >>>  49
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27639999985694885
+Starting Generation  50 ...
+Results for Generation >>>  50
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27639999985694885
+Starting Generation  51 ...
+Results for Generation >>>  51
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27639999985694885
+Starting Generation  52 ...
+Results for Generation >>>  52
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27639999985694885
+Starting Generation  53 ...
+Results for Generation >>>  53
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.27639999985694885
+Starting Generation  54 ...
+Results for Generation >>>  54
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2781166732311249
+Starting Generation  55 ...
+Results for Generation >>>  55
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2781166732311249
+Starting Generation  56 ...
+Results for Generation >>>  56
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.28121668100357056
+Starting Generation  57 ...
+Results for Generation >>>  57
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.28121668100357056
+Starting Generation  58 ...
+Results for Generation >>>  58
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2834666669368744
+Starting Generation  59 ...
+Results for Generation >>>  59
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2834666669368744
+Starting Generation  60 ...
+Results for Generation >>>  60
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2835499942302704
+Starting Generation  61 ...
+Results for Generation >>>  61
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2835499942302704
+Starting Generation  62 ...
+Results for Generation >>>  62
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.28388333320617676
+Starting Generation  63 ...
+Results for Generation >>>  63
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2843833267688751
+Starting Generation  64 ...
+Results for Generation >>>  64
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.28439998626708984
+Starting Generation  65 ...
+Results for Generation >>>  65
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2844833433628082
+Starting Generation  66 ...
+Results for Generation >>>  66
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.28593334555625916
+Starting Generation  67 ...
+Results for Generation >>>  67
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.28593334555625916
+Starting Generation  68 ...
+Results for Generation >>>  68
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2859500050544739
+Starting Generation  69 ...
+Results for Generation >>>  69
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2859500050544739
+Starting Generation  70 ...
+Results for Generation >>>  70
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2859500050544739
+Starting Generation  71 ...
+Results for Generation >>>  71
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2859500050544739
+Starting Generation  72 ...
+Results for Generation >>>  72
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2859500050544739
+Starting Generation  73 ...
+Results for Generation >>>  73
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2859500050544739
+Starting Generation  74 ...
+Results for Generation >>>  74
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2859500050544739
+Starting Generation  75 ...
+Results for Generation >>>  75
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2859500050544739
+Starting Generation  76 ...
+Results for Generation >>>  76
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2865833342075348
+Starting Generation  77 ...
+Results for Generation >>>  77
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2865833342075348
+Starting Generation  78 ...
+Results for Generation >>>  78
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2866833209991455
+Starting Generation  79 ...
+Results for Generation >>>  79
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2922999858856201
+Starting Generation  80 ...
+Results for Generation >>>  80
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.2933333218097687
+Starting Generation  81 ...
+Results for Generation >>>  81
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.29561665654182434
+Starting Generation  82 ...
+Results for Generation >>>  82
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.29743334650993347
+Starting Generation  83 ...
+Results for Generation >>>  83
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3012666702270508
+Starting Generation  84 ...
+Results for Generation >>>  84
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3012666702270508
+Starting Generation  85 ...
+Results for Generation >>>  85
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3013833463191986
+Starting Generation  86 ...
+Results for Generation >>>  86
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.30276668071746826
+Starting Generation  87 ...
+Results for Generation >>>  87
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3034333288669586
+Starting Generation  88 ...
+Results for Generation >>>  88
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3042333424091339
+Starting Generation  89 ...
+Results for Generation >>>  89
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.30425000190734863
+Starting Generation  90 ...
+Results for Generation >>>  90
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3042833209037781
+Starting Generation  91 ...
+Results for Generation >>>  91
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3066999912261963
+Starting Generation  92 ...
+Results for Generation >>>  92
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.30773332715034485
+Starting Generation  93 ...
+Results for Generation >>>  93
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.30774998664855957
+Starting Generation  94 ...
+Results for Generation >>>  94
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.30793333053588867
+Starting Generation  95 ...
+Results for Generation >>>  95
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.30793333053588867
+Starting Generation  96 ...
+Results for Generation >>>  96
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3079499900341034
+Starting Generation  97 ...
+Results for Generation >>>  97
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3079499900341034
+Starting Generation  98 ...
+Results for Generation >>>  98
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3079499900341034
+Starting Generation  99 ...
+Results for Generation >>>  99
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3079499900341034
+Starting Generation  100 ...
+Results for Generation >>>  100
+Best Individual: 
+Individual: 784, 512, 10; Fitness: 0.3079499900341034
