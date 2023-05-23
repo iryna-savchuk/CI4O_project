@@ -39,8 +39,7 @@ def get_fitness(self):
 Individual.get_fitness = get_fitness
 
 
-def run_evolution(runs, pop_size, gens, select, crossover, mutate, xo_prob, mut_prob, elitism, tourn_size, output_dir):
-
+def run_evolution(runs, pop_size, gens, select, crossover, mutate, xo_prob, mut_prob, elitism, output_dir, **kwargs):
     for r in range(runs):
         print(f"RUN #{r + 1}")
 
@@ -59,16 +58,19 @@ def run_evolution(runs, pop_size, gens, select, crossover, mutate, xo_prob, mut_
         best_fitness_lst = pop.evolve(gens=gens,
                                       select=select, crossover=crossover, mutate= mutate,
                                       xo_prob=xo_prob, mut_prob=mut_prob,
-                                      elitism=elitism,
-                                      tourn_size=tourn_size)
+                                      elitism=elitism, **kwargs)
 
         print(best_fitness_lst)
 
 
 # we can define the name of the file, to have different files with different parameters
-run_evolution(runs=2, pop_size=20, gens=5,
-              select= tournament_sel,
+run_evolution(runs=2, pop_size=5, gens=3,
+              select= fps, #tournament_sel,
               crossover=arithmetic_xo,
-              mutate= arithmetic_mutation,
-              xo_prob= 0.9, mut_prob= 0.1, elitism=True, tourn_size= 4,
-              output_dir = '4_50_50_tournament_sel_arithmetic_xo_mutation_90_30_4.csv')
+              mutate=arithmetic_mutation,
+              tourn_size=3,
+              xo_prob=0.9, mut_prob= 0.1, elitism=True,
+              output_dir='output/',
+              )
+
+'4_50_50_tournament_sel_arithmetic_xo_mutation_90_30_4.csv'

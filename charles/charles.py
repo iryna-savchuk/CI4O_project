@@ -72,7 +72,7 @@ class Population: # Class defining Population of individuals in Genetic Algorith
                 )
             )
 
-    def evolve(self, gens, select, crossover, mutate, xo_prob, mut_prob, elitism, tourn_size):
+    def evolve(self, gens, select, crossover, mutate, xo_prob, mut_prob, elitism, **kwargs):
         """
         Method to evolve the population for a given number of generations,
         with a given selection method, crossover, mutation, and elitism.
@@ -106,7 +106,10 @@ class Population: # Class defining Population of individuals in Genetic Algorith
 
             while len(new_pop) < self.size: # generate new individuals until the population size is reached
                 # Selection
-                parent1, parent2 = select(self, tourn_size), select(self, tourn_size)
+                if (select.__name__ == 'tournament_sel') and ('tourn_size' in kwargs):
+                    parent1, parent2 = select(self, kwargs['tourn_size']), select(self, kwargs['tourn_size'])
+                else:
+                    parent1, parent2 = select(self), select(self)
 
                 # Crossover
                 if random.random() < xo_prob:
