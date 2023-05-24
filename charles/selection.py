@@ -1,4 +1,4 @@
-from random import uniform, choice, sample
+from random import uniform, choice
 from operator import attrgetter
 
 
@@ -37,12 +37,11 @@ def tournament_sel(population, tourn_size=4):
 
     Args:
         population (Population): The population we want to select from.
-        size (int): Size of the tournament.
+        tourn_size (int): Size of the tournament.
 
     Returns:
         Individual: The best individual in the tournament.
     """
-    print("Printing from inside tournament_sel", tourn_size)
     # Select individuals based on tournament size
     # with choice, there is a possibility of repetition in the choices,
     # so every individual has a chance of getting selected

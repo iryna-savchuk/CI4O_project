@@ -85,6 +85,7 @@ class Population: # Class defining Population of individuals in Genetic Algorith
             xo_prob (float): Crossover probability
             mut_prob (float): Mutation probability
             elitism (bool): Whether to use elitism
+            **kwargs: Optionally, may contain 'tourn_size' (int), when selection is 'tournament_sel'.
 
         Returns:
             (list): The list of the best fitness values got for each generation during evolution.

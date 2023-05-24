@@ -120,19 +120,3 @@ if __name__ == '__main__':
     o1, o2 = arithmetic_xo(p1, p2)
     print(o1, o2)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
