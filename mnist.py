@@ -28,7 +28,7 @@ def get_fitness(self):
     nn.set_weights([weights_1, biases_1, weights_2, biases_2])
 
     # Compiling the model
-    nn.compile(loss='sparse_categorical_crossentropy', metrics=["accuracy"])
+    nn.compile(loss='sparse_categorical_crossentropy', metrics=["categorical_accuracy"])
 
     train_loss, train_acc = nn.evaluate(train_images, train_labels, verbose=0)
     return train_acc
@@ -74,8 +74,8 @@ def run_evolution(run, pop_size, gens, select, crossover, mutate, xo_prob, mut_p
     print(f"All best fitness, from each generation, from each run have been saved to {filename}")
 
 # we can define the name of the file, to have different files with different parameters
-run_evolution(run = 1, pop_size = 10, gens = 10, select = tournament_sel, crossover= arithmetic_xo, mutate= arithmetic_mutation,
-              xo_prob= 0.9, mut_prob= 0.3, elitism= True, tourn_size= 4, filename = '4_50_50_tournament_sel_arithmetic_xo_mutation_90_30_4.csv')
+run_evolution(run = 5, pop_size = 15, gens = 15, select = tournament_sel, crossover= arithmetic_xo, mutate= arithmetic_mutation,
+              xo_prob= 0.9, mut_prob= 0.1, elitism= True, tourn_size= 4, filename = '5_15_15_tourn_4_arithmetic_xo_mut_90_10.csv')
 
 # How the list, we will store as csv file, looks like:
 print('----------------------------------------------------------------------------------------------')
