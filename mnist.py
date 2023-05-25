@@ -1,8 +1,10 @@
+# Imports
 from charles.charles import Population, Individual
 from data.mnist_data import train_images, train_labels
-from charles.crossover import cycle_xo, pmx, single_point_co, arithmetic_xo
-from charles.mutation import swap_mutation, inversion_mutation, arithmetic_mutation
 from charles.selection import tournament_sel, fps
+from charles.crossover import single_point_co, arithmetic_xo
+from charles.mutation import inversion_mutation, arithmetic_mutation
+
 import numpy as np
 from tensorflow.keras import Sequential, layers
 import os
@@ -234,4 +236,3 @@ run_evolution(runs=10, pop_size=20, gens=20,
               xo_prob=0.9, mut_prob=0.1, elitism=True,
               output_file='output/10_runs.csv')
 
- 
