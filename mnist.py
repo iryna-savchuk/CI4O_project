@@ -131,6 +131,31 @@ def run_evolution(runs, pop_size, gens, select, crossover, mutate, xo_prob, mut_
 ###### Running evolution with the desired configurations ######
 ###############################################################
 
+# FINAL RUNS: the best 2 configurations, with 30 independent runs for each
+
+#1
+run_evolution(runs=30, pop_size=20, gens=20,
+              select=tournament_sel,
+              crossover=arithmetic_xo,
+              mutate=arithmetic_mutation,
+              xo_prob=0.9, mut_prob=0.3, elitism=True,
+              output_file='output/final_comparison.csv',
+              tourn_size=2)
+
+#2
+run_evolution(runs=30, pop_size=20, gens=20,
+              select=tournament_sel,
+              crossover=single_point_co,
+              mutate=inversion_mutation,
+              xo_prob=0.9, mut_prob=0.3, elitism=True,
+              output_file='output/final_comparison.csv',
+              tourn_size=4)
+
+
+
+'''
+# Initial runs for various combinations (the list is not complete)
+
 # TOURNAMENT SELECTION
 # tourn_size = 4 (default)
 #1
@@ -235,4 +260,4 @@ run_evolution(runs=10, pop_size=20, gens=20,
               mutate=inversion_mutation,
               xo_prob=0.9, mut_prob=0.1, elitism=True,
               output_file='output/10_runs.csv')
-
+'''
