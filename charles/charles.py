@@ -2,7 +2,7 @@
 import random
 from operator import attrgetter
 from copy import deepcopy
-from tqdm import tqdm # Python library that produces a progress bar
+from tqdm import tqdm  # Python library that produces a progress bar
 
 random.seed(42)  # Ensuring reproducibility of the results
 
@@ -29,21 +29,21 @@ class Individual: # Class defining an individual for the Genetic Algorithm
                 "hidden": hidden,
                 "output": output
             }
-        else: # If representation is provided, assign it directly
+        else:  # If representation is provided, assign it directly
             self.representation = representation
         self.fitness = self.get_fitness()
 
-    def get_fitness(self): # Fitness function evaluates the quality or performance of an individual solution
+    def get_fitness(self):  # Fitness function evaluates the quality or performance of an individual solution
         # Raises an exception indicating that you need to monkey patch it
         raise Exception("You need to monkey patch the fitness path.")
 
-    def index(self, value): # Returns the index of the provided value in the weights of the representation
+    def index(self, value):  # Returns the index of the provided value in the weights of the representation
         return self.representation["weights"].index(value)
 
-    def __len__(self): # Returns the length of the weights in the representation
+    def __len__(self):  # Returns the length of the weights in the representation
         return len(self.representation["weights"])
 
-    def __getitem__(self, position): # Returns the value of the weight at the specified position
+    def __getitem__(self, position):  # Returns the value of the weight at the specified position
         return self.representation["weights"][position]
 
     def __setitem__(self, position, value): # Sets the weight at the specified position to the provided value
@@ -60,11 +60,11 @@ class Population: # Class defining Population of individuals in Genetic Algorith
     def __init__(self, size, optim, **kwargs):
         print("Generating initial population...")
         self.individuals = []
-        self.size = size # initial population size is determined by the parameter size
-        self.optim = optim # parameter to determine whether an optimization problem is maximization or minimization
+        self.size = size  # initial population size is determined by the parameter size
+        self.optim = optim  # parameter to determine whether an optimization problem is maximization or minimization
         for _ in tqdm(range(size)):
             self.individuals.append(
-                Individual( # **kwargs is used to pass the parameters to the Individual class to initialize each individual
+                Individual(  # **kwargs is used to pass the parameters to the Individual class to initialize each individual
                     input=kwargs["sol_input"],
                     hidden=kwargs["sol_hidden"],
                     output=kwargs["sol_output"],
@@ -105,7 +105,8 @@ class Population: # Class defining Population of individuals in Genetic Algorith
                 elif self.optim == "min":
                     elite = deepcopy(min(self.individuals, key=attrgetter("fitness")))
 
-            while len(new_pop) < self.size: # generate new individuals until the population size is reached
+            while len(new_pop) < self.size:  # generate new individuals until the population size is reached
+
                 # Selection
                 if (select.__name__ == 'tournament_sel') and ('tourn_size' in kwargs):
                     parent1, parent2 = select(self, kwargs['tourn_size']), select(self, kwargs['tourn_size'])
@@ -124,7 +125,7 @@ class Population: # Class defining Population of individuals in Genetic Algorith
                 if random.random() < mut_prob:
                     offspring2 = mutate(offspring2)
 
-                # The new individuals are of the same architecture (input, hidden, and output) as their parents
+                # The new individuals are of the same architecture (input, hidden, and output) as their both parents
                 new_pop.append(Individual(representation={
                     "weights": offspring1,
                     "input": parent1.representation["input"],
@@ -172,8 +173,8 @@ class Population: # Class defining Population of individuals in Genetic Algorith
 
         return best_fitness_lst
 
-    def __len__(self): # Returns the number of individuals in the population
+    def __len__(self):  # Returns the number of individuals in the population
         return len(self.individuals)
 
-    def __getitem__(self, position): # Returns an individual at the given position in the population
+    def __getitem__(self, position):  # Returns an individual at the given position in the population
         return self.individuals[position]

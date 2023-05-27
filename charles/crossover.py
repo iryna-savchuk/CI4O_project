@@ -113,11 +113,11 @@ def arithmetic_xo(p1, p2):
         o2[i] = p2[i] * alpha + (1-alpha) * p1[i]
     return o1, o2
 
-# similar to single-point crossover, but instead of choosing one crossover point, it chooses multiple random points to make the crossover.
+
 def uniform_crossover(p1, p2):
-    """ This function applies uniform crossover.
+    """ Implementation of uniform crossover.
     Each gene in the parent, by random choice, decides if it will be swapped.
-    This is done by generating a random binary mask of 1s and 0s, where a 1 indicates it will be swapped the gene and a 0 not.
+    This is done by generating a random binary mask of 1s and 0s, where a 1 indicates the gene will be swapped and a 0 - will not.
     Therefore, it is necessary to iterate over every gene and decide whether to swap it.
 
     Args:
@@ -127,11 +127,9 @@ def uniform_crossover(p1, p2):
     Returns:
         Individuals: Two offspring, resulting from the crossover.
     """
-    mask = choices([0, 1], k=len(p1))  # Random binary mask.
-    offspring1, offspring2 = p1[:], p2[:]  # Copies of parents
+    mask = choices([0, 1], k=len(p1))  # random binary mask
+    offspring1, offspring2 = p1[:], p2[:]  # copies of parents
     for i in range(len(p1)):
-        if mask[i] == 1:  # If the mask at position i is 1, we swap the genes at position i
+        if mask[i] == 1:  # if the mask at position i is 1, swap the genes at position i
             offspring1[i], offspring2[i] = offspring2[i], offspring1[i]
     return offspring1, offspring2
-
-
