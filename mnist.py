@@ -2,7 +2,7 @@
 from charles.charles import Population, Individual
 from data.mnist_data import train_images, train_labels
 from charles.selection import tournament_sel, fps
-from charles.crossover import single_point_co, arithmetic_xo
+from charles.crossover import single_point_co, arithmetic_xo, uniform_crossover
 from charles.mutation import inversion_mutation, arithmetic_mutation
 
 import numpy as np
