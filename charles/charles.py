@@ -170,6 +170,13 @@ class Population: # Class defining Population of individuals in Genetic Algorith
 
             # Appending the list of the best fitness values that will be returned once evolution ends
             best_fitness_lst.append(best_individual.fitness)
+            
+            # Checking if max possible accuracy is reached in generation
+            if (best_individual.fitness == 1) and (self.optim == "max"):
+                for j in range(i+1, gens):
+                    best_fitness_lst.append(1.0)
+                    print("Appended Elite with Fitness = 1")
+                return best_fitness_lst
 
         return best_fitness_lst
 
