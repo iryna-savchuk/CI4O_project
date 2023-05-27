@@ -2,7 +2,7 @@ from random import randint, sample
 import random
 
 
-def binary_mutation(individual):
+def binary_mut(individual):
     """Binary mutation for a GA individual. Flips the bits.
 
     Args:
@@ -26,7 +26,7 @@ def binary_mutation(individual):
     return individual
 
 
-def swap_mutation(individual):
+def swap_mut(individual):
     """Swap mutation for a GA individual. Swaps the bits.
 
     Args:
@@ -40,7 +40,7 @@ def swap_mutation(individual):
     return individual
 
 
-def inversion_mutation(individual):
+def inversion_mut(individual):
     """Inversion mutation for a GA individual. Reverts a portion of the representation.
 
     Args:
@@ -56,7 +56,7 @@ def inversion_mutation(individual):
     return individual
 
 
-def arithmetic_mutation(individual, lower_bound=-0.1, upper_bound=0.1):
+def arithmetic_mut(individual, lower_bound=-0.1, upper_bound=0.1):
     """Arithmetic mutation for a GA individual. Each gene is altered by a random value.
 
     Args:

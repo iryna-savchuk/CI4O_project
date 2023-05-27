@@ -2,8 +2,8 @@
 from charles.charles import Population, Individual
 from data.mnist_data import train_images, train_labels
 from charles.selection import tournament_sel, fps
-from charles.crossover import single_point_co, arithmetic_xo, uniform_crossover
-from charles.mutation import inversion_mutation, arithmetic_mutation
+from charles.crossover import single_point_xo, arithmetic_xo, uniform_xo
+from charles.mutation import inversion_mut, arithmetic_mut
 
 import numpy as np
 from tensorflow.keras import Sequential, layers
@@ -131,133 +131,11 @@ def run_evolution(runs, pop_size, gens, select, crossover, mutate, xo_prob, mut_
 ###### Running evolution with the desired configurations ######
 ###############################################################
 
-# FINAL RUNS: the best 2 configurations, with 30 independent runs for each
-
-#1
-run_evolution(runs=30, pop_size=20, gens=20,
+# Example
+run_evolution(runs=3, pop_size=10, gens=10,
               select=tournament_sel,
               crossover=arithmetic_xo,
-              mutate=arithmetic_mutation,
+              mutate=arithmetic_mut,
               xo_prob=0.9, mut_prob=0.3, elitism=True,
-              output_file='output/final_comparison.csv',
+              output_file='output/test.csv',
               tourn_size=2)
-
-#2
-run_evolution(runs=30, pop_size=20, gens=20,
-              select=tournament_sel,
-              crossover=single_point_co,
-              mutate=inversion_mutation,
-              xo_prob=0.9, mut_prob=0.3, elitism=True,
-              output_file='output/final_comparison.csv',
-              tourn_size=4)
-
-
-
-'''
-# Initial runs for various combinations (the list is not complete)
-
-# TOURNAMENT SELECTION
-# tourn_size = 4 (default)
-#1
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=tournament_sel,
-              crossover=arithmetic_xo,
-              mutate=arithmetic_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv')
-
-#2
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=tournament_sel,
-              crossover=arithmetic_xo,
-              mutate=inversion_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv')
-
-#3
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=tournament_sel,
-              crossover=single_point_co,
-              mutate=arithmetic_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv')
-
-#4
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=tournament_sel,
-              crossover=single_point_co,
-              mutate=inversion_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv')
-
-# tourn_size = 2
-#5
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=tournament_sel,
-              crossover=arithmetic_xo,
-              mutate=arithmetic_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv',
-              tourn_size=2)
-
-#6
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=tournament_sel,
-              crossover=arithmetic_xo,
-              mutate=inversion_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv',
-              tourn_size=2)
-
-#7
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=tournament_sel,
-              crossover=single_point_co,
-              mutate=arithmetic_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv',
-              tourn_size=2)
-
-#8
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=tournament_sel,
-              crossover=single_point_co,
-              mutate=inversion_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv',
-              tourn_size=2)
-
-
-# Fitness proportionate selection (FPS)
-#9
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=fps,
-              crossover=arithmetic_xo,
-              mutate=arithmetic_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv')
-
-#10
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=fps,
-              crossover=arithmetic_xo,
-              mutate=inversion_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv')
-
-#11
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=fps,
-              crossover=single_point_co,
-              mutate=arithmetic_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv')
-
-#12
-run_evolution(runs=10, pop_size=20, gens=20,
-              select=fps,
-              crossover=single_point_co,
-              mutate=inversion_mutation,
-              xo_prob=0.9, mut_prob=0.1, elitism=True,
-              output_file='output/10_runs.csv')
-'''

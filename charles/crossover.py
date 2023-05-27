@@ -1,7 +1,7 @@
 from random import randint, sample, uniform, choices
 
 
-def single_point_co(p1, p2):
+def single_point_xo(p1, p2):
     """Implementation of single point crossover.
 
     Args:
@@ -114,7 +114,7 @@ def arithmetic_xo(p1, p2):
     return o1, o2
 
 
-def uniform_crossover(p1, p2):
+def uniform_xo(p1, p2):
     """ Implementation of uniform crossover.
     Each gene in the parent, by random choice, decides if it will be swapped.
     This is done by generating a random binary mask of 1s and 0s, where a 1 indicates the gene will be swapped and a 0 - will not.
