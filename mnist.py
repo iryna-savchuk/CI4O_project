@@ -131,7 +131,7 @@ def run_evolution(runs, pop_size, gens, select, crossover, mutate, xo_prob, mut_
 ###### Running evolution with the desired configurations ######
 ###############################################################
 
-# Example
+# Example of the run
 run_evolution(runs=3, pop_size=10, gens=10,
               select=tournament_sel,
               crossover=arithmetic_xo,
